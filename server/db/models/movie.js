@@ -24,6 +24,9 @@ Movie = db.define("movie", {
   rating: {
     type: Sequelize.STRING,
   },
+  runtime: {
+    type: Sequelize.INTEGER,
+  },
   seen: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
