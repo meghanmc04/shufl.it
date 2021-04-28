@@ -10,9 +10,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../public")));
 
-// app.get("/api", (req, res) => {
-//   res.json({ message: "HAI I'M PAUL" });
-// });
+// app.use("/api", require("./api"));
+
+app.get("/api", (req, res) => {
+  res.json({ message: "HAI I'M PAUL" });
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public.index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`tell me something good, ${PORT}`);
