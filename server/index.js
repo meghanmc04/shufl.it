@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const morgan = require("morgan");
-
+const db = require("./db");
 const PORT = process.env.PORT || 8080;
 const app = express();
 
@@ -22,6 +22,9 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).send(err.message || "internal server error");
 });
 
-app.listen(PORT, () => {
-  console.log(`tell me something good, ${PORT}`);
+db.sync().then(() => {
+  console.log("db synced!");
+  app.listen(PORT, () => {
+    console.log(`tell me something good, ${PORT}`);
+  });
 });
