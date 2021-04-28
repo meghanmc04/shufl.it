@@ -1,18 +1,18 @@
 const path = require("path");
 
 module.exports = {
+  mode: "development",
   entry: ["@babel/polyfill", "./client/index.js"],
   output: {
     path: __dirname,
     filename: "./public/bundle.js",
   },
-  mode: "development",
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: [".js", ".jsx"],
   },
-  devtool: 'source-map',
+  devtool: "source-map",
   watchOptions: {
-    ignored: /node_modules/
+    ignored: /node_modules/,
   },
   module: {
     rules: [
